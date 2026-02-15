@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gemini Live Voice</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <div class="title">Gemini Live Voice</div>
+          <div class="subtitle">Browser mic ↔ Gemini 2.5 Flash Native Audio</div>
+        </div>
+      </div>
+
+      <div class="status">
+        <span id="statusPill" class="pill pill-off">Disconnected</span>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="controls">
+        <button id="connectBtn" class="btn primary">Connect</button>
+        <button id="disconnectBtn" class="btn" disabled>Disconnect</button>
+
+        <button id="micBtn" class="btn mic" disabled>
+          <span id="micIcon">🎙️</span>
+          <span id="micLabel">Start mic</span>
+        </button>
+
+        <div class="field">
+          <label>Voice</label>
+          <input id="voiceName" placeholder="e.g. Kore" value="Kore" />
+        </div>
+
+        <div class="field wide">
+          <label>System instruction</label>
+          <input id="systemInstruction" value="You are a helpful and friendly AI assistant." />
+        </div>
+
+        <label class="toggle">
+          <input id="affective" type="checkbox" />
+          <span>Affective dialog (v1alpha)</span>
+        </label>
+
+        <label class="toggle">
+          <input id="proactive" type="checkbox" />
+          <span>Proactive audio (v1alpha)</span>
+        </label>
+      </div>
+
+      <div class="captions">
+        <div class="cap">
+          <div class="capLabel">You (live)</div>
+          <div id="capIn" class="capText">—</div>
+        </div>
+        <div class="cap">
+          <div class="capLabel">Gemini (live)</div>
+          <div id="capOut" class="capText">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat" id="chat"></section>
+
+    <section class="panel">
+      <div class="typeRow">
+        <input id="textInput" placeholder="Optional: type a message (sends as realtime text)..." />
+        <button id="sendTextBtn" class="btn" disabled>Send</button>
+      </div>
+      <div class="hint">
+        Tip: use headphones to avoid echo. API keys are kept server-side (recommended).
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
